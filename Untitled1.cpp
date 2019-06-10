@@ -1,44 +1,34 @@
 #include <iostream>
+#include <vector>
 using namespace std;
-
-template<typename T>
-void reverse(const T list[], T newList[], int size)
+int min(vector < vector < int > > findMin)
 {
-	for (int i = 0, j = size - 1; i < size; i++, j--)
+	int min=findMin[0][0];
+	for (int i = 0; i < 4; i++)
 	{
-		newList[j] = list[i];
+		for (int j = 0; j < 3; j++)
+		{
+			if (min > findMin[i][j])
+				min = findMin[i][j];
+		}
 	}
+	return min;
 }
-template<typename T>
-void printArray(const T list[], int size)
-{
-	for (int i = 0; i < size; i++)
-		cout << list[i] << " ";
-}
-
 int main()
 {
-	const int SIZE = 6;
-	char list[] = { 'a', 'b', 'c', 'd', 'e', 'f' };
-	char newList[SIZE];
-	double arr[] = { 1.1, 2.2, 3.3, 4.4, 5.5, 6.6 };
-	double newArr[SIZE];
-	reverse(list, newList, SIZE);
-	reverse(arr, newArr, SIZE);
-	cout << "The original array: ";
-	printArray(list, SIZE);
-	cout << endl;
+	vector < vector < int > > number(4);
+	int num,Min;
+	for (int i = 0; i < 4; i++)
+		number[i] = vector<int>(3);
+	for (int i = 0; i < 4; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			cin >> num;
+			number[i][j] = num;
+		}
+	}
+	Min = min(number);
+	cout << "min: " <<Min;
 
-	cout << "The reversed array: ";
-	printArray(newList, SIZE);
-	cout << endl;
-
-	cout << "The original array: ";
-	printArray(arr, SIZE);
-	cout << endl;
-
-	cout << "The reversed array: ";
-	printArray(newArr, SIZE);
-	cout << endl;
-	return 0;
 }
